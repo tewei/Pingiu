@@ -1,0 +1,11 @@
+<template name="ChatList">
+    {{#each rooms}}
+        {{> Room}}
+    {{/each}}
+</template>
+
+<template name="Room">
+    <a href="/chats/{{_id}}">
+        Enter
+    </a>
+</template>
