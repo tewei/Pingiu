@@ -2,29 +2,32 @@
     {{#each messages}}
         {{> Message}}
     {{/each}}
-    {{> NewMessage}}
-</template>
-
-<template name="Message">
-    <blockquote>
-        <p>{{text}}</p>
-        <footer>{{timestampToTime timestamp}}</footer>
-    </blockquote>
-    
-    
-</template>
-
-<template name="NewMessage">
     {{#if room.active}}
         <h3>開始XU吧</h3>
     {{else}}
         <h3>{{room.keyword}}</h3>
         <h3>正在等待有緣人</h3>
     {{/if}}
+    {{> NewMessage}}
+</template>
+
+<template name="Message">
+    {{#if isself}}
+        <p class="text-right">{{text}}</p>
+        <p class="text-right">{{timestampToTime timestamp}}</p>
+    {{else}}
+        <p class="text-left">{{text}}</p>
+        <p class="text-left">{{timestampToTime timestamp}}</p>
+    {{/if}}
+</template>
+
+<template name="NewMessage">
+    
     <form class="new-message">
         <div class="form-group">
             <input type="text" class="form-control" name="text">
         </div>
         <button type="submit" class="btn btn-default">\傳送/</button>
     </form>
+
 </template>

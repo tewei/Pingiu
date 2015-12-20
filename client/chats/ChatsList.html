@@ -1,11 +1,19 @@
-<template name="ChatList">
-    {{#each rooms}}
+<template name="ChatsList">
+    
+    {{#each chatrooms}}
         {{> Room}}
     {{/each}}
 </template>
 
 <template name="Room">
-    <a href="/chats/{{_id}}">
-        Enter
-    </a>
+    <div class="panel panel-default">
+        <div class="panel-body">
+            {{timestampToTime timestamp}}
+            {{#if active}}
+            <a class="btn btn-default" href="/chats/{{_id}}" role="button">Enter</a>
+            {{else}}
+            尚未配對成功
+            {{/if}}
+        </div>
+    </div>
 </template>

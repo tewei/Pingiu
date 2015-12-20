@@ -12,6 +12,16 @@ Template.Chatroom.helpers({
     }
 });
 
+Template.Message.helpers({
+    isself: function(){
+        if(this.author === Meteor.userId()){
+            return true;
+        }else{
+            return false;
+        }
+    }
+});
+
 Template.NewMessage.events({
     'submit .new-message': function(event){
         event.preventDefault();
@@ -27,8 +37,8 @@ Template.NewMessage.events({
 
 Template.registerHelper("timestampToTime", function(timestamp){
     var date = new Date(timestamp);
-    var hours = "0" + date.getHours();
+    var hours = date.getHours();
     var minutes = "0" + date.getMinutes();
     var seconds = "0" + date.getSeconds();
-    return hours.substr(minutes.length-2) + ':' + minutes.substr(minutes.length-2);
+    return hours + ':' + minutes.substr(minutes.length-2);
 });

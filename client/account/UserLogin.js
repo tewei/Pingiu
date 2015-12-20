@@ -27,3 +27,10 @@ Template.UserLogin.events({
         event.target.text.value = "";
     }
 });
+
+Template.SiteHeader.events({
+    'click .logout': function(event){
+        event.preventDefault();
+        Meteor.logout();
+    }
+});

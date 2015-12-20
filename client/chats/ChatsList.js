@@ -1,8 +1,8 @@
 Meteor.subscribe('chatrooms');
 
-Template.ChatList.helpers({
+Template.ChatsList.helpers({
     chatrooms: function(){
-        return Chatrooms.find({});
+        return Chatrooms.find({members: Meteor.userId()}, {$sort: {timestamp: -1}});
     }
 });
 
