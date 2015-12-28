@@ -1,14 +1,27 @@
 <template name="Chatroom">
-    {{#each messages}}
-        {{> Message}}
-    {{/each}}
-    {{#if room.active}}
-        <h3>開始XU吧</h3>
-    {{else}}
-        <h3>{{room.keyword}}</h3>
-        <h3>正在等待有緣人</h3>
-    {{/if}}
-    {{> NewMessage}}
+    <div class="container">
+        {{#if room.active}}
+            <div class="alert alert-info">
+                開始XU吧!
+            </div>
+        {{else}}
+            <div class="alert alert-info">
+                正在等候使用{{room.keyword}}的有緣人
+            </div>
+        {{/if}}
+
+        
+        {{#each messages}}
+            {{> Message}}
+        {{/each}}
+    </div>
+    <div class="sticky-bottom">
+        {{> NewMessage}}
+        {{#if room.active}}
+            {{> AddFriend}}
+        {{/if}}
+    </div>
+    
 </template>
 
 <template name="Message">
@@ -30,4 +43,8 @@
         <button type="submit" class="btn btn-default">\傳送/</button>
     </form>
 
+</template>
+
+<template name="AddFriend">
+    <button class="btn btn-default">+Pingiu</button>
 </template>
